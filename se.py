@@ -79,5 +79,3 @@ except KeyboardInterrupt:
     GPIO.cleanup()
     print("Finished and clean up GPIO")
     # estart python
-    sys.stdout.flush()
-    os.execv(sys.argv[0], sys.argv)
