@@ -8,18 +8,21 @@ from __future__ import print_function
 import RPi.GPIO as GPIO
 import time
 
+GPIO.cleanup()
+
 # Pin Number
 PIN = 19
-OUT_PIN = 26
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(OUT_PIN,GPIO.OUT)
-
-GPIO.output(OUT_PIN, True)
+# GPIO.setup(OUT_PIN,GPIO.OUT)
 while True:
-    pin_status = GPIO.input(PIN)
-    print(pin_status)
-    time.sleep(0.1)
+    try:
+        pin_status = GPIO.input(PIN)
+        print(pin_status)
+        time.sleep(0.1)
+    except KeyboardInterrupt:
+        GPIO.cleanup()
+        print("Finished and clean up GPIO")
+        break
 
-GPIO.cleanup()
