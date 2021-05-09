@@ -31,7 +31,6 @@ se5 = pygame.mixer.Sound(arrName[4])
 
 # Pin Number
 TACT_GPIO = 19
-
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(TACT_GPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
