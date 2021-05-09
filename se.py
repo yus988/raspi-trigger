@@ -7,7 +7,12 @@ pygame.mixer.quit()
 pygame.mixer.pre_init(buffer=32)
 pygame.mixer.init()
 
-se = pygame.mixer.Sound('pi.wav')
+se = pygame.mixer.Sound('gunRaw.wav')
+se = pygame.mixer.Sound('gunRawArm.wav')
+se = pygame.mixer.Sound('gunRawNeck.wav')
+se = pygame.mixer.Sound('gunSamp.wav')
+se = pygame.mixer.Sound('gunStime.wav')
+
 # Pin Number
 TACT_GPIO = 19
 
