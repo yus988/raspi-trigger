@@ -15,7 +15,6 @@ se = pygame.mixer.Sound('gunStime.wav')
 
 # Pin Number
 TACT_GPIO = 19
-
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(TACT_GPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
