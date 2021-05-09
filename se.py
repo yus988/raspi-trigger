@@ -1,31 +1,33 @@
 import pygame.mixer
 import time
 import RPi.GPIO as GPIO
+from time import perf_counter
 
+pygame.mixer.quit()
+pygame.mixer.pre_init(buffer=32)
 pygame.mixer.init()
-pygame.mixer.music.load('se1.mp3')
 
+se = pygame.mixer.Sound('pi.wav')
 # Pin Number
 TACT_GPIO = 19
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(TACT_GPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-
 def playSE():
-    pygame.mixer.music.play(1) # loop count
-    time.sleep(2)   #20秒再生
+    se.play() # loop count
+    time.sleep(0.5)   #20秒再生
     pygame.mixer.music.stop()  #停止
 
 # GPIO.add_event_detect(TACT_GPIO, GPIO.RISING, callback=playSE, bouncetime=1)
 
 try: 
     while True:
-        time.sleep(0) 
+        # time.sleep(1) 
         if GPIO.input(TACT_GPIO) == 0:
+            # print("before play",perf_counter())
             playSE()
             
 except KeyboardInterrupt:
         GPIO.cleanup()
         print("Finished and clean up GPIO")
-    
