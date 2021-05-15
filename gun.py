@@ -1,11 +1,10 @@
+# 銃撃時に振動をならすスクリプト
+# スイッチを押したら音がなる。はじめに鳴らす音を 1, 2, 3, 4, 5 で指定
+
 import pygame.mixer
 import time
 import RPi.GPIO as GPIO
 from time import perf_counter
-
-# modules for restart python
-import os
-import sys
 
 pygame.mixer.quit()
 pygame.mixer.pre_init(buffer=64)
@@ -44,10 +43,6 @@ def playSE(se):
 
 
 seType = input("input type num : ")
-# se = pygame.mixer.Sound('gunRaw.wav')
-
-# se = "hoge"
-
 if seType == "1":
     se = se1
     name = arrName[0]
