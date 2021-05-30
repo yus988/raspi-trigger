@@ -84,8 +84,8 @@ try:
         data = readAdc(0, spi)
         volts = convertVolts(data, vref)
         print(volts)
-        # if volts > 1:
-        #     playSE(se)
+        if volts > 3:
+            playSE(se)
         # MCP3008 の Vref に入れた電圧. ここでは 5V
         # time.sleep(0.1)
 
