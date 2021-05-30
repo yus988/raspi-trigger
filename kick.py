@@ -14,8 +14,6 @@ import datetime
 import pygame.mixer
 import RPi.GPIO as GPIO
 
-
-
 # 解説参照
 def readAdc(channel, spi):
     adc = spi.xfer2([1, (8 + channel) << 4, 200])
@@ -34,7 +32,6 @@ def playSE(se):
     pygame.mixer.music.stop()  # 停止
     
 ####################### setup se #################################
-
 pygame.mixer.quit()
 pygame.mixer.pre_init(buffer=64)
 pygame.mixer.init()
