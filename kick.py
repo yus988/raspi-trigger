@@ -32,6 +32,7 @@ def playSE(se):
     pygame.mixer.music.stop()  # 停止
     
 ####################### setup se #################################
+isSEPlayed = False
 pygame.mixer.quit()
 pygame.mixer.pre_init(buffer=64)
 pygame.mixer.init()
@@ -84,8 +85,12 @@ try:
         data = readAdc(0, spi)
         volts = convertVolts(data, vref)
         print(volts)
-        if volts > 3:
+        if volts > 3 and isSEPlayed == False:
             playSE(se)
+            isSEPlayed = True
+        elif volts < 2 and isSEPlayed == True:
+            isSEPlayed = False
+            
         # MCP3008 の Vref に入れた電圧. ここでは 5V
         # time.sleep(0.1)
 
